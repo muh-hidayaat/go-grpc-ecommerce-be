@@ -4,6 +4,8 @@ package service;
 
 option go_package = "github.com/muh-hidayaat/go-grpc-ecommerce-be/pb/service";
 
+import "common/base_response.proto";
+
 service HelloWorld {
   rpc HelloWorld (HelloRequest) returns (HelloResponse);
 }
@@ -14,4 +16,5 @@ message HelloRequest {
 
 message HelloResponse {
   string message = 1;
+  common.BaseResponse base_response = 2;
 }

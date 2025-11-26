@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/muh-hidayaat/go-grpc-ecommerce-be/internal/utils"
 	"github.com/muh-hidayaat/go-grpc-ecommerce-be/pb/service"
 )
 
@@ -14,6 +15,7 @@ type serviceHandler struct {
 func (sh *serviceHandler) HelloWorld(ctx context.Context, request *service.HelloRequest) (*service.HelloResponse, error) {
 	return &service.HelloResponse{
 		Message: fmt.Sprintf("Hello %v", request.Name),
+		Base:    utils.SuccessResponse("success"),
 	}, nil
 }
 

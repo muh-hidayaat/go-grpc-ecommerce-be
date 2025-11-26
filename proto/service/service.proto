@@ -16,5 +16,5 @@ message HelloRequest {
 
 message HelloResponse {
   string message = 1;
-  common.BaseResponse base_response = 2;
+  common.BaseResponse base = 2;
 }

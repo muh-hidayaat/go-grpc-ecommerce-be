@@ -20,6 +20,7 @@ func ErrorMiddleware(ctx context.Context, req any, info *grpc.UnaryServerInfo, h
 	res, err := handler(ctx, req)
 	if err != nil {
 		log.Printf("Error when listening: %v", err)
+		return nil, status.Error(codes.Internal, "Internal Server Error")
 	}
 	return res, err
 }

@@ -8,7 +8,7 @@ import "buf/validate/validate.proto";
 option go_package = "github.com/muh-hidayaat/go-grpc-ecommerce-be/pb/auth";
 
 service AuthService {
-    // rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Login (LoginRequest) returns (LoginResponse);
     rpc Register (RegisterRequest) returns (RegisterResponse);
 }
 
@@ -21,4 +21,13 @@ message RegisterRequest {
 
 message RegisterResponse{
     common.BaseResponse base=1;
+}
+message LoginRequest {
+    string email = 1 [(buf.validate.field).string = {email:true, min_len: 1, max_len: 255}];
+    string password = 2 [(buf.validate.field).string = {min_len: 1, max_len: 255}];
+}
+
+message LoginResponse{
+    common.BaseResponse base=1;
+    string access_token = 2;
 }
